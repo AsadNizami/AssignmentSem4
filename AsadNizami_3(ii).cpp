@@ -67,6 +67,27 @@ struct node* construct_util(){
 	return root;
 }
 
+int menu(){
+	int option;
+	cout << "1: Read from a file" << endl;
+	cout << "2: Write to a file" << endl;
+	cout << "3: Display" << endl;
+//	cout << "4: Reset" << endl;
+
+	cin >> option;
+	return option;
+}
+void write(){
+	string file_name, data;
+	ofstream new_file("new.txt");
+	cout << "Input the preorder traversal of a tree\n";
+	fflush(stdin);
+	getline(cin, data);
+	new_file << data;
+	cout << "Written to a file" << endl;
+	new_file.close();
+}
+
 void preOrder(struct node* root){
 	if(root == NULL || root->data == -1){
 		return;
@@ -77,10 +98,14 @@ void preOrder(struct node* root){
 }
 
 int main(){
-
-	struct node* root = construct_util();
-//	cout<<"done";
-	preOrder(root);
-	
+	struct node* root = NULL;
+	while(true){
+		int option = menu();
+		if (option == 1)	root = construct_util();
+		else if(option == 2)	write();
+		else if(option == 3)	{preOrder(root); cout << endl;}
+//		else if(option == 4)	{free(root); root=NULL;}
+		else break;
+	}
 }
 
