@@ -2,23 +2,27 @@
 #include<cstdlib>
 #include<fstream>
 #include<bits/stdc++.h>
+#include<cstring>
 
 using namespace std;
 
 struct node{
 	struct node* left;
 	struct node* right;
-	string data;
+	char data[100];
 	int total;
 	int arr[100];
 };
 
 struct node* new_node(string word, int line){
+
 	struct node* temp = (struct node*)malloc(sizeof(struct node));
 	temp->left = NULL;
 	temp->right = NULL;
 	temp->total = 1;
-	temp->data = word;
+	strcpy(temp->data, word.c_str());
+//	temp->data = word;
+
 	for(int i=0; i<100; i++)	temp->arr[i] = -1;
 	temp->arr[0] = line;
 	return temp;
@@ -49,10 +53,12 @@ struct node* insert(struct node* root, string word, int line){
 		if(root->data < word){
 			root->right = insert(root->right, word, line);
 		}
-		else
+		else{
 			root->left = insert(root->left, word, line);
+		}
 	}
-//	return root;
+
+	return root;
 }
 
 struct node* constructUtil(struct node* root){
@@ -91,6 +97,7 @@ void find(struct node* root, string word){
 		int i=0;
 		while(root->arr[i] != -1){
 			cout << root->arr[i] << " "; 
+			i++;
 		}
 		cout << endl;
 	}
@@ -102,13 +109,29 @@ void find(struct node* root, string word){
 	}
 }
 
+void write(struct node* root){
+	if(root==NULL)return;
+	ofstream new_file("new4.txt", ios_base::app);
+
+	fflush(stdin);
+	new_file<<root->data<<" ";
+	write(root->left);
+	write(root->right);
+}
+void write_util(struct node* root){
+	write(root);
+}
+
 int main(){
 	struct node* root = NULL;
 	string word;
 	root = constructUtil(root);
-	preOrder(root);
-	cout << "Enter the word to find" << endl;
-	cin >> word;
-	find(root, word);
-	
+	write_util(root);
+//	preOrder(root);
+	while(true){
+		cout << "Enter the word to find or -1 to exit" << endl;
+		cin >> word;
+		if(word=="-1")	break;
+		find(root, word);
+	}
 }
