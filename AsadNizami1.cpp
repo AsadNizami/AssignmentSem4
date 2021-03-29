@@ -43,7 +43,7 @@ void build_max_heap(int heap[], int heap_size){
 	for(int i=heap_size/2; i>=0; i--)
 		max_heapify(heap, i, heap_size); 
 } 
-
+ 
 int main(){
 	int size=5;
 	cout << "Enter the size of array" << endl;
