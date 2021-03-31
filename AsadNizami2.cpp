@@ -21,7 +21,7 @@ bool isFull(){
 void max_heapify_insert(struct stack stk[], int index){
 	int parent = (index-1)/2;
 
-	int largest = index;
+//	int max = index;
 	if(stk[parent].priority < stk[index].priority){
 		swap(stk[parent], stk[index]);
 		max_heapify_insert(stk, parent);
@@ -32,16 +32,15 @@ void max_heapify_delete(struct stack stk[], int index){
 	int right = 2*index+2;
 	struct stack left_child = stk[left];
 	struct stack right_child = stk[right];
-	int largest = index;
+	int max = index;
 	
-	if(left<=top && left_child.priority > stk[largest].priority)	largest = left;
-	if(right<=top && right_child.priority > stk[largest].priority)	largest = right;
+	if(left<=top && left_child.priority > stk[max].priority)	max = left;
+	if(right<=top && right_child.priority > stk[max].priority)	max = right;
 	
-	if(stk[largest].priority != stk[index].priority){
-		swap(stk[largest], stk[index]);
-		max_heapify_delete(stk, largest);
+	if(stk[max].priority != stk[index].priority){
+		swap(stk[max], stk[index]);
+		max_heapify_delete(stk, max);
 	}
-	
 }
 
 void push(struct stack stk[]){

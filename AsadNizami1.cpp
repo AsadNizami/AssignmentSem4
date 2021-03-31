@@ -12,14 +12,14 @@ void max_heapify(int heap[], int i, int heap_size){
 	int left = 2*i+1;
 	int right = 2*i+2;
 
-	int largest = i;
-	if (left<heap_size && heap[left]>heap[i])	largest = left;
+	int max = i;
+	if (left<heap_size && heap[left]>heap[max])	max = left;
 
-	if(right<heap_size && heap[right]>heap[largest])	largest = right;
+	if(right<heap_size && heap[right]>heap[max])	max = right;
 
-	if(largest!=i){
-		swap(heap[i], heap[largest]);
-		max_heapify(heap, largest, heap_size);
+	if(max!=i){
+		swap(heap[i], heap[max]);
+		max_heapify(heap, max, heap_size);
 	}
 }
 
@@ -42,22 +42,23 @@ void max_heap_insert(int heap[], int heap_size){
 void build_max_heap(int heap[], int heap_size){
 	for(int i=heap_size/2; i>=0; i--)
 		max_heapify(heap, i, heap_size); 
-} 
+}
  
 int main(){
-	int size=5;
+	int size;
 	cout << "Enter the size of array" << endl;
 	cin >> size;
-	int heap[size];
+	int heap[size], heap1[size];
 	cout << "Enter the element" << endl;
-	for(int i=0; i<size; i++)
+	for(int i=0; i<size; i++){
 		cin >> heap[i];
-//	int heap[] = {4,10,3,5,1};
-	
+		heap1[i] = heap[i];		
+	}
+
 	build_max_heap(heap, size);
 	cout << "Build max heap :" << endl;
 	print(heap, size);
-	max_heap_insert(heap, size);
+	max_heap_insert(heap1, size);
 	cout << "Insert in max heap :" << endl;
-	print(heap, size);
+	print(heap1, size);
 }
