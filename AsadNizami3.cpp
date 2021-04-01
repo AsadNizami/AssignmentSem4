@@ -77,7 +77,7 @@ int main(){
 	while (true){
 		int option = menu();
 		if (option==1) 	heap_sort(arr, size);
-		else if(option==2) 	counting_sort(arr, size, 10000, true);
+		else if(option==2) 	counting_sort(arr, size, 10001, true);
 		else if(option==3)	radix_sort(arr, size);
 		else	break;		
 	}

@@ -72,8 +72,9 @@ int pop(struct stack stk[]){
 }
 
 void display(struct stack stk[]){
+	cout << "Priority\t" << "Value" << endl; 
 	for(int i=0; i<top; i++){
-		cout << stk[i].priority << " " << stk[i].value << endl;
+		cout << stk[i].priority << "\t\t " << stk[i].value << endl;
 	}
 }
 
@@ -83,6 +84,7 @@ int menu(){
 	cout << "2: Pop" << endl;
 	cout << "3: IsEmpty" << endl;
 	cout << "4: IsFull" << endl;
+	cout << "5: Display" << endl;
 	int option;
 	cin >> option;
 	return option;

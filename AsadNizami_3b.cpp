@@ -65,9 +65,7 @@ void radix_sort(int arr[], int size){
 int main(){
 	freopen(".\\Datasheet\\size10000000.txt", "r", stdin);
 	freopen(".\\Output\\size10000000.txt", "w", stdout);
-//	int size;
-//	cin >> size;
-//	int arr[size];
+
 	int max_dig = 5;
 	for (int i=0; i<size; i++) cin >> arr[i];
 	
