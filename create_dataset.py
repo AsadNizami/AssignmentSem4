@@ -6,9 +6,8 @@ def create_file(_max):
     file_name = f'size{_max}.txt'
     with open(file_name, 'w') as file:
 
-        lst = list(np.random.randint(low=10, high=100000, size=_max))
-        stdout.writelines()
-        print(_max, file=file)
+        lst = list(np.random.randint(low=10, high=10000, size=_max))
+        # print(_max, file=file)
         print(*lst, file=file)
     print('Done', _max)
 
