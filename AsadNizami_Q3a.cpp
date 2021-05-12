@@ -57,7 +57,7 @@ struct node pop(struct node stk[]){
 	struct node ans;
 	if (!isEmpty()){
 		ans = stk[0];
-		stk[0] = stk[top--];
+		stk[0] = stk[--top];
 		min_heapify_delete(stk, 0);
 		return ans;
 	}
@@ -75,13 +75,11 @@ void display_heap(struct node stk[]){
 }
 
 void dijkstra(int **graph, int size, int start){
-	node stk[max_size];
+	struct node stk[max_size];
 	int min_distance[size];
 	bool visited[size];
 
 	for(int i=0; i<size; i++){
-		stk[i].vertex = i;
-		stk[i].min_dist = 1e9;
 		min_distance[i] = 1e9;
 		visited[i] = false;
 	}
