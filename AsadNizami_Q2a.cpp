@@ -74,9 +74,6 @@ void display(struct node job_arr[], int size){
 		cout << job_arr[i].job << " \t" << job_arr[i].profit << " \t\t" << job_arr[i].deadline << endl; 
 }
 
-void jb_sequencing(struct node job_arr[], int size){
-
-}
 
 int main(){
 	int size;
@@ -103,7 +100,4 @@ int main(){
 		}
 	}
 	display(job_seq, size);
-
-
-
 }
