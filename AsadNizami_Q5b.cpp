@@ -102,8 +102,6 @@ void dfs_helper(struct graph* G, int size){
 			dfs(G, i, visited, size);
 		}
 	}
-	
-	// cout << "\n" << endl;
 	// display_stack();
 }
 
