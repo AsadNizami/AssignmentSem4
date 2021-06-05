@@ -92,7 +92,6 @@ int main(){
 		int element;
 		cin >> element;
 		delete_node(lst, size, element);
-		display_list(lst, size);
 	}
 	display_list(lst, size);
 }
